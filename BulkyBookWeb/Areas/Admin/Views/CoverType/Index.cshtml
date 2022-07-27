@@ -1,0 +1,44 @@
+﻿ @model IEnumerable<BulkyBook.Models.CoverType>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">CoverType List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="CoverType" asp-action="Create" class="btn btn-primary"><i class="bi bi-vector-pen"></i> &nbsp;Create New CoverType</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" stylel="widhth:100">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach(var obj in Model)
+        {
+            <tr>
+                <td widhth="20%">@obj.ID</td>
+                <td widhth="40%">@obj.Name</td>
+                <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="CoverType" asp-action="Edit" class="btn btn-primary mx-2" asp-route-id="@obj.ID">
+                        <i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                    <a asp-action="Details" asp-route-id="@obj.ID" class="btn btn-secondary mx-2">
+                        <i class="bi bi-ticket-detailed"></i>&nbsp; Details</a>
+                    <a asp-controller="CoverType" asp-action="Delete" class="btn btn-danger mx-2" asp-route-id="@obj.ID">
+                        <i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
